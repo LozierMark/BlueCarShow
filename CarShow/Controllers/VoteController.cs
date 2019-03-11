@@ -10,18 +10,16 @@ using System.Web.Mvc;
 namespace CarShow.Controllers
 {
     [Authorize]
-    public class CarController : Controller
+    public class VoteController : Controller
     {
-        // GET: Car
+        // GET: Vote
         public ActionResult Index()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new CarService(userId);
-            var model = service.GetCars();
-
+            var service = new VoteService(userId);
+            var model = service.Getvotes();
             return View(model);
         }
-
         //Add method here VVVV
         // GET
         public ActionResult Create()
@@ -31,77 +29,75 @@ namespace CarShow.Controllers
         //Add code here vvvv
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CarCreate model)
+        public ActionResult CreateVote(VoteCreate model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            var service = CreateCarService();
+            var service = CreateVoteService();
 
-            if (service.CreateCar(model))
+            if (service.CreateVote(model))
             {
-                TempData["SaveResult"] = "Your Car was created.";
+                TempData["SaveResult"] = "Your vote was created.";
                 return RedirectToAction("Index");
-
             };
 
-            ModelState.AddModelError("", "Car could not be created.");
+            ModelState.AddModelError("", "Vote could not be created.");
 
             return View(model);
-
         }
         public ActionResult Details(int id)
         {
-            var svc = CreateCarService();
-            var model = svc.GetCarById(id);
+            var svc = CreateVoteService();
+            var model = svc.GetVoteById(id);
 
             return View(model);
         }
-        private CarService CreateCarService()
+        private VoteService CreateVoteService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new CarService(userId);
+            var service = new VoteService(userId);
             return service;
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, CarEdit model)
+        public ActionResult Edit(Guid id, VoteEdit model)
         {
             if (ModelState.IsValid) return View(model);
 
-            if (model.CarId != id)
+            if (model.OwnerId != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
             }
-            var service = CreateCarService();
+            var service = CreateVoteService();
 
-            if (service.UpdateCar(model))
+            if (service.UpdateVote(model))
             {
-                TempData["SaveResult"] = "Your car was updated.";
+                TempData["SaveResult"] = "Your vote was updated.";
                 return RedirectToAction("Index");
             }
-            ModelState.AddModelError("", "Your car could not be updated.");
+            ModelState.AddModelError("", "Your vote could not be updated.");
             return View(model);
-        }
 
+        }
         public ActionResult Edit(int id)
         {
-            var service = CreateCarService();
+            var service = CreateVoteService();
+            var detail = service.GetVoteById(id);
+            var model = new VoteEdit
 
-            var detail = service.GetCarById(id);
 
-            new CarEdit
             {
                 CarId = detail.CarId,
-                Make = detail.Make,
-                Model = detail.Model,
-                Year = detail.Year,
-                Color = detail.Color,
+                OwnerId = detail.OwnerId,
+                Paint = detail.Paint,
+                Engine = detail.Engine,
+                Interior = detail.Interior,
+                BestOfShow = detail.BestOfShow,
                 ModifiedUtc = DateTimeOffset.UtcNow,
             };
-
-            return View();
-
+            return View(model);
         }
     }
+
 }

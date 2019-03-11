@@ -31,7 +31,8 @@ namespace CarShow.Data
         {
             return new ApplicationDbContext();
         }
-         public DbSet<Car> car { get; set; }
+         public DbSet<Car> Cars { get; set; }
+        public DbSet<Vote> Votes { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder

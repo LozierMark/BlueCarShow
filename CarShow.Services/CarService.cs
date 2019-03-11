@@ -31,12 +31,13 @@ namespace CarShow.Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.car.Add(entity);
+                ctx.Cars.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
 
         }
-        public IEnumerable<CarListItem> GetCar()
+        public IEnumerable<CarListItem> GetCars()
+
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -45,23 +46,67 @@ namespace CarShow.Services
                      .Cars
                      .Where(e => e.OwnerId == _userId)
                      .Select(
-                         e =>
-                             new CarListItem
-                             {
-                                 CarId = e.CarId,
-                                 Make = e.Make,
-                                 Model = e.Model,
-                                 Year = e.Year,
-                                 Color = e.Color,
-                                 CreatedUtc = DateTimeOffset.Now
-                             }
+                     e =>
+                     new CarListItem
+                     {
+                         CarId = e.CarId,
+                         Make = e.Make,
+                         Model = e.Model,
+                         Year = e.Year,
+                         Color = e.Color,
+                         CreatedUtc = DateTimeOffset.Now,
+                     }
                     );
 
-                return query.ToArry();
+                return query.ToArray();
             }
         }
+        public CarDetail GetCarById(int carId)
+        {
+
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+
+
+                        ctx.Cars.Single(e => e.CarId == carId && e.OwnerId == _userId);
+                return
+                    new CarDetail
+                    {
+                        CarId = entity.CarId,
+                        Make = entity.Make,
+                        Model = entity.Model,
+                        Year = entity.Year,
+                        Color = entity.Color,
+                        CreatedUtc = DateTimeOffset.Now
+                    };
+            }
+        }
+        public bool UpdateCar(CarEdit model)
+
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Cars
+                    .Single(e => e.OwnerId == _userId);
+
+                entity.CarId = model.CarId;
+                entity.Make = model.Make;
+                entity.Model = model.Model;
+                entity.Year = model.Year;
+                entity.Color = model.Color;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
     }
 }
+
+
 
 
 
