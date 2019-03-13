@@ -11,8 +11,8 @@ namespace CarShow.Data.Migrations
                 "dbo.Car",
                 c => new
                     {
+                        CarId = c.Int(nullable: false, identity: true),
                         OwnerId = c.Guid(nullable: false),
-                        CarId = c.Int(nullable: false),
                         Make = c.String(nullable: false),
                         Model = c.String(nullable: false),
                         Year = c.Int(nullable: false),
@@ -20,7 +20,7 @@ namespace CarShow.Data.Migrations
                         CreatedUtc = c.DateTimeOffset(nullable: false, precision: 7),
                         ModifiedUtc = c.DateTimeOffset(precision: 7),
                     })
-                .PrimaryKey(t => t.OwnerId);
+                .PrimaryKey(t => t.CarId);
             
             CreateTable(
                 "dbo.IdentityRole",
@@ -92,6 +92,22 @@ namespace CarShow.Data.Migrations
                 .ForeignKey("dbo.ApplicationUser", t => t.ApplicationUser_Id)
                 .Index(t => t.ApplicationUser_Id);
             
+            CreateTable(
+                "dbo.Vote",
+                c => new
+                    {
+                        VoteId = c.Int(nullable: false, identity: true),
+                        CarId = c.Int(nullable: false),
+                        OwnerId = c.Guid(nullable: false),
+                        Paint = c.String(nullable: false),
+                        Engine = c.String(nullable: false),
+                        Interior = c.String(nullable: false),
+                        BestOfShow = c.String(nullable: false),
+                        CreatedUtc = c.DateTimeOffset(nullable: false, precision: 7),
+                        ModifiedUtc = c.DateTimeOffset(precision: 7),
+                    })
+                .PrimaryKey(t => t.VoteId);
+            
         }
         
         public override void Down()
@@ -104,6 +120,7 @@ namespace CarShow.Data.Migrations
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
+            DropTable("dbo.Vote");
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");

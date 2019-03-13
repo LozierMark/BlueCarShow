@@ -9,8 +9,7 @@ namespace CarShow.Models
 {
     public class VoteDetail
     {
-       
-        public int CarId { get; set; }
+        public int VoteId { get; set; }
         public Guid OwnerId { get; set; }
         public string Paint { get; set; }
         public string Engine { get; set; }
@@ -20,6 +19,6 @@ namespace CarShow.Models
         public DateTimeOffset CreatedUtc { get; set; }
         [Display(Name = "Modified")]
         public DateTimeOffset? ModifiedUtc { get; set; }
-        public override string ToString() => $"[{CarId}] {OwnerId} {Paint} {Engine} {Interior} {BestOfShow}";
+        public override string ToString() =>$"{Paint} {Engine} {Interior} {BestOfShow}";
     }
 }

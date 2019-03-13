@@ -9,17 +9,14 @@ namespace CarShow.Models
 {
     public class CarCreate
     {
-        [Required]
-        [MinLength(2, ErrorMessage = "Please enter at least 2 characters.")]
-        [MaxLength(100, ErrorMessage = "There are too many characters in this field.")]
+        //[Key]
+        //public int CarId { get; set; }
         public string Make { get; set; }
-
-        [MaxLength(8000)]
         public string Model { get; set; }
         public int Year { get; set; }
         public string Color { get; set; }
 
-        public override string ToString() => $"{Make} {Model} {Year}";
+        //public override string ToString() => $"{Make} {Model} {Year}";
        
         }
     }

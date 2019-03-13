@@ -60,11 +60,11 @@ namespace CarShow.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Guid id, VoteEdit model)
+        public ActionResult Edit(int id, VoteEdit model)
         {
             if (ModelState.IsValid) return View(model);
 
-            if (model.OwnerId != id)
+            if (model.VoteId != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
@@ -80,24 +80,38 @@ namespace CarShow.Controllers
             return View(model);
 
         }
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateVoteService();
+            service.DeleteVote(id);
+            TempData["SaveResult"] = "Your vote was deleted";
+
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Edit(int id)
         {
             var service = CreateVoteService();
             var detail = service.GetVoteById(id);
-            var model = new VoteEdit
+            var model =
 
-
-            {
-                CarId = detail.CarId,
-                OwnerId = detail.OwnerId,
-                Paint = detail.Paint,
-                Engine = detail.Engine,
-                Interior = detail.Interior,
-                BestOfShow = detail.BestOfShow,
-                ModifiedUtc = DateTimeOffset.UtcNow,
-            };
+                new VoteEdit
+                {
+                    VoteId = detail.VoteId,
+                    OwnerId = detail.OwnerId,
+                    Paint = detail.Paint,
+                    Engine = detail.Engine,
+                    Interior = detail.Interior,
+                    BestOfShow = detail.BestOfShow,
+                    ModifiedUtc = DateTimeOffset.UtcNow,
+                    CreatedUtc = DateTimeOffset.UtcNow,
+                };
             return View(model);
         }
-    }
 
+    }
 }
+

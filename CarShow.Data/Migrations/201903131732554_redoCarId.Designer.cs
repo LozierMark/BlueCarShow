@@ -7,13 +7,13 @@ namespace CarShow.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class first : IMigrationMetadata
+    public sealed partial class redoCarId : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(first));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(redoCarId));
         
         string IMigrationMetadata.Id
         {
-            get { return "201903061924341_first"; }
+            get { return "201903131732554_redoCarId"; }
         }
         
         string IMigrationMetadata.Source

@@ -83,6 +83,17 @@ namespace CarShow.Controllers
             ModelState.AddModelError("", "Your car could not be updated.");
             return View(model);
         }
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateCarService();
+            service.DeleteCar(id);
+            TempData["SaveResult"] = "Your car was deleted";
+
+            return RedirectToAction("Index");
+        }
 
         public ActionResult Edit(int id)
         {
@@ -101,7 +112,7 @@ namespace CarShow.Controllers
             };
 
             return View();
-
         }
+
     }
 }

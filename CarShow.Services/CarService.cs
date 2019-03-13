@@ -102,9 +102,24 @@ namespace CarShow.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        public bool DeleteCar(int carId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Cars
+                        .Single(e => e.CarId == carId && e.OwnerId == _userId);
 
+                ctx.Cars.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
+
 }
+
 
 
 

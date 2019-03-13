@@ -27,12 +27,6 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.CarId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OwnerId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Paint)
             </th>
             <th>
@@ -53,9 +47,7 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CarId)
-                </td>
+                
                 <td>
                     @Html.DisplayFor(modelItem => item.OwnerId)
                 </td>
@@ -75,9 +67,9 @@
                     @Html.DisplayFor(modelItem => item.CreatedUtc)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.OwnerId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.OwnerId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.OwnerId })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.VoteId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.VoteId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.VoteId })
                 </td>
             </tr>
         }

@@ -9,15 +9,23 @@ namespace CarShow.Models
 {
     public class VoteCreate
     {
+        [Key]
+        public int VoteId { get; set; }
         [Required]
-        [MinLength(2, ErrorMessage = "Please enter at least 2 characters.")]
-        [MaxLength(100, ErrorMessage = "There are too many characters in this field.")]
+        public Guid OwnerId { get; set; }
+        [Required]
         public string Paint { get; set; }
-
-        [MaxLength(8000)]
+        [Required]
         public string Engine { get; set; }
+        [Required]
         public string Interior { get; set; }
+        [Required]
         public string BestOfShow { get; set; }
+        [Required]
+        public DateTimeOffset CreatedUtc { get; set; }
+
+        public DateTimeOffset? ModifiedUtc { get; set; }
+
 
         public override string ToString() => $"{Paint} {Engine} {Interior} {BestOfShow}";
 

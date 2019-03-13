@@ -10,7 +10,7 @@ namespace CarShow.Data
     public class Vote
     {
         [Key]
-        public int CarId { get; set; }
+        public int VoteId { get; set; }
         [Required]
         public Guid OwnerId { get; set; }
         [Required]

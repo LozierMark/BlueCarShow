@@ -21,12 +21,14 @@ namespace CarShow.Services
             var entity =
                 new Vote()
                 {
+                    VoteId = model.VoteId,
                     OwnerId = _userId,
                     Paint = model.Paint,
                     Engine = model.Engine,
                     Interior = model.Interior,
                     BestOfShow = model.BestOfShow,
-                    CreatedUtc = DateTimeOffset.Now
+                    CreatedUtc = DateTimeOffset.Now,
+                    ModifiedUtc = DateTimeOffset.Now, 
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -48,12 +50,14 @@ namespace CarShow.Services
                      (e =>
                      new VoteListItems
                      {
+                         VoteId = e.VoteId,
                          OwnerId = _userId,
                          Paint = e.Paint,
                          Engine = e.Engine,
                          Interior = e.Interior,
                          BestOfShow = e.BestOfShow,
                          CreatedUtc = DateTimeOffset.Now,
+                         ModifiedUtc = DateTimeOffset.Now,
                      }
                      );
                 return query.ToArray();
@@ -64,16 +68,21 @@ namespace CarShow.Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Votes.Single(e => e.CarId == voteId && e.OwnerId == _userId);
+                var entity = 
+                    ctx
+                    .Votes
+                    .Single(e => e.VoteId == voteId && e.OwnerId == _userId);
 
                 return new VoteDetail
                 {
+                    VoteId = entity.VoteId,
                     OwnerId = _userId,
                     Paint = entity.Paint,
                     Engine = entity.Engine,
                     Interior = entity.Interior,
                     BestOfShow = entity.BestOfShow,
                     CreatedUtc = DateTimeOffset.Now,
+                    ModifiedUtc = DateTimeOffset.Now,
                 };
 
             }
@@ -82,26 +91,42 @@ namespace CarShow.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Votes.Single(e => e.OwnerId == _userId);
+                var entity = ctx.Votes.Single(e => e.VoteId == model.VoteId && e.OwnerId == _userId);
 
-                entity.CarId = model.CarId;
-                entity.OwnerId = model.OwnerId;
+                entity.VoteId = model.VoteId;
+                entity.OwnerId = _userId;
                 entity.Paint = model.Paint;
                 entity.Engine = model.Engine;
                 entity.Interior = model.Interior;
                 entity.BestOfShow = model.BestOfShow;
-                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+                entity.CreatedUtc = DateTimeOffset.Now;
+                entity.ModifiedUtc = DateTimeOffset.Now;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool DeleteVote(int voteId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                ctx
+                .Votes
+                .Single(e => e.VoteId == voteId && e.OwnerId == _userId);
+
+                ctx.Votes.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }
 
-
         }
     }
 }
-   
 
 
 
-          
+
+
+
+
 

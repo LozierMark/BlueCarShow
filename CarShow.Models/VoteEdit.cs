@@ -8,7 +8,7 @@ namespace CarShow.Models
 {
     public class VoteEdit
     {
-        public int CarId { get; set; }
+        public int VoteId { get; set; }
         public Guid OwnerId { get; set; }
         public string Paint { get; set; }
         public string Engine { get; set; }
