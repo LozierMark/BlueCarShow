@@ -4,11 +4,15 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
+<h2>Car Show</h2>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <p>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Click Here to Start", "Create")
 </p>
 @if (TempData.ContainsKey("SaveResult"))
 {
@@ -64,11 +68,23 @@
                 @Html.DisplayFor(modelItem => item.CreatedUtc)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.CarId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.CarId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.CarId })
+                @Html.ActionLink("Edit", "Edit", new { id = item.CarId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CarId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CarId })
             </td>
         </tr>
     }
-
 </table>
+
+    
+<div class="col-sm-4">
+        <img src="~/Content/Assets/Mustang500.jpg" width="500" height="300" />
+    </div>
+    <div class="col-sm-4">
+        <img src="~/Content/Assets/MustangFront.jpg" width="500" height="300" />
+    </div>
+    <div class="col-sm-4">
+        <img src="~/Content/Assets/mustangleft.jpg" width="500" height="300" />
+    </div>
+
+

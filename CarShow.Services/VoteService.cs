@@ -22,6 +22,7 @@ namespace CarShow.Services
                 new Vote()
                 {
                     VoteId = model.VoteId,
+                    CarId = model.CarId,
                     OwnerId = _userId,
                     Paint = model.Paint,
                     Engine = model.Engine,
@@ -51,6 +52,7 @@ namespace CarShow.Services
                      new VoteListItems
                      {
                          VoteId = e.VoteId,
+                         CarId = e.CarId,
                          OwnerId = _userId,
                          Paint = e.Paint,
                          Engine = e.Engine,
@@ -76,7 +78,9 @@ namespace CarShow.Services
                 return new VoteDetail
                 {
                     VoteId = entity.VoteId,
+
                     OwnerId = _userId,
+                    CarId = entity.CarId,
                     Paint = entity.Paint,
                     Engine = entity.Engine,
                     Interior = entity.Interior,
@@ -94,6 +98,7 @@ namespace CarShow.Services
                 var entity = ctx.Votes.Single(e => e.VoteId == model.VoteId && e.OwnerId == _userId);
 
                 entity.VoteId = model.VoteId;
+                entity.CarId = model.CarId;
                 entity.OwnerId = _userId;
                 entity.Paint = model.Paint;
                 entity.Engine = model.Engine;

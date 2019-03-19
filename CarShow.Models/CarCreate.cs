@@ -9,15 +9,15 @@ namespace CarShow.Models
 {
     public class CarCreate
     {
-        //[Key]
-        //public int CarId { get; set; }
+        [Key]
+        public int CarId { get; set; }
         public string Make { get; set; }
         public string Model { get; set; }
         public int Year { get; set; }
         public string Color { get; set; }
 
-        //public override string ToString() => $"{Make} {Model} {Year}";
-       
-        }
+        public override string ToString() => $"{Make} {Model} {Year}";
+
     }
+}    
 

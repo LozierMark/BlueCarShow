@@ -1,13 +1,42 @@
-﻿body {
+﻿
+body {
     padding-top: 50px;
     padding-bottom: 20px;
-}
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
     padding-left: 15px;
     padding-right: 15px;
+    background-color: #FF5C5C;
 }
+.bg-image {
+    background-image:url("Assets/Car.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+header {
+    background-color: transparent
+}
+h1 {
+    color: #DA0000;
+    font-size: 18rem;
+    text-shadow: 1px 1px 4px black;
+    background-color: rgba(255, 255, 255, 0.20);
+}
+p {
+    color: blueviolet;
+    font-size: 4rem;
+    
+}
+footer{
+    color:white;
+    font-size:2rem;
+}
+.navbarfont{
+font-size:2rem;
+}
+/*Set padding to keep content from hitting the edges
+.body-content {
+   
+}*/
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 

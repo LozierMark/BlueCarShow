@@ -12,15 +12,17 @@ namespace CarShow.Models
         [Key]
         public int VoteId { get; set; }
         [Required]
+        public int CarId { get; set; }
+        [Required]
         public Guid OwnerId { get; set; }
         [Required]
-        public string Paint { get; set; }
+        public int Paint { get; set; }
         [Required]
-        public string Engine { get; set; }
+        public int Engine { get; set; }
         [Required]
-        public string Interior { get; set; }
+        public int Interior { get; set; }
         [Required]
-        public string BestOfShow { get; set; }
+        public int BestOfShow { get; set; }
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
 

@@ -28,27 +28,26 @@ namespace CarShow.Controllers
         {
             return View();
         }
-        //Add code here vvvv
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CarCreate model)
+        public ActionResult Create(CarCreate carCreate)
         {
-            if (!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid) return View(carCreate);
 
             var service = CreateCarService();
 
-            if (service.CreateCar(model))
+            if (service.CreateCar(carCreate))
             {
-                TempData["SaveResult"] = "Your Car was created.";
+                TempData["SaveResult"] = "Your car is finally running.";
                 return RedirectToAction("Index");
+            }
 
-            };
-
-            ModelState.AddModelError("", "Car could not be created.");
-
-            return View(model);
-
+            ModelState.AddModelError("", "Your car is totaled");
+            return View(carCreate);
         }
+        
+
         public ActionResult Details(int id)
         {
             var svc = CreateCarService();

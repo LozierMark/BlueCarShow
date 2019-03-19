@@ -10,11 +10,12 @@ namespace CarShow.Models
     public class VoteListItems
     {
         public int VoteId { get; set; }
+        public int CarId { get; set; }
         public Guid OwnerId { get; set; }
-        public string Paint { get; set; }
-        public string Engine { get; set; }
-        public string Interior { get; set; }
-        public string BestOfShow { get; set; }
+        public int Paint { get; set; }
+        public int Engine { get; set; }
+        public int Interior { get; set; }
+        public int BestOfShow { get; set; }
         [Display(Name = "Modified")]
         public DateTimeOffset? ModifiedUtc { get; set; }
         [Display(Name = "Created")]
