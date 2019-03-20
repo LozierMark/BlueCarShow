@@ -63,6 +63,7 @@
     <Compile Include="VoteDetail.cs" />
     <Compile Include="VoteEdit.cs" />
     <Compile Include="VoteListItems.cs" />
+    <Compile Include="WinnerModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

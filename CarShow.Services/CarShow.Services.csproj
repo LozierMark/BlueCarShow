@@ -57,6 +57,7 @@
     <Compile Include="CarService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VoteService.cs" />
+    <Compile Include="WinnerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

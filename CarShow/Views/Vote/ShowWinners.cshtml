@@ -1,0 +1,50 @@
+﻿@model CarShow.Models.WinnerModel
+
+@{
+    ViewBag.Title = "ShowWinners";
+}
+
+<h2>ShowWinners</h2>
+
+<div>
+    <h4>WinnerModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.bestpaint)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bestpaint)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bestengine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bestengine)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bestinterior)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bestinterior)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bestofshow)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bestofshow)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

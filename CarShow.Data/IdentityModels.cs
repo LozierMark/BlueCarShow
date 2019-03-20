@@ -55,7 +55,7 @@ namespace CarShow.Data
         {
             public IdentityUserRoleConfiguration()
             {
-                HasKey(iur => iur.RoleId);
+                HasKey(iur => iur.UserId);
             }
         }
     }

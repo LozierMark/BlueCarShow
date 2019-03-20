@@ -9,6 +9,7 @@ namespace CarShow
 {
     public partial class Startup
     {
+        public static string ADMIN_PASS = "Mark@1310";
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
@@ -37,7 +38,7 @@ namespace CarShow
                 user.UserName = "Mark";
                 user.Email = "lozierm2@gmail.com";
 
-                string userPWD = "M@1310";
+                string userPWD = ADMIN_PASS;
 
                 var chkUser = UserManager.Create(user, userPWD);
 

@@ -111,7 +111,28 @@ namespace CarShow.Controllers
                 };
             return View(model);
         }
+        public ActionResult ShowWinners()
+        {
+            var svc = CreateWinnerService();
+            int[] results = svc.FindWinners();
+            var model = new WinnerModel
+            {
+                bestpaint = results[0],
+                bestengine = results[1],
+                bestinterior = results[2],
+                bestofshow = results[3]
+            };
+            return View(model);
+            
+        }
+        private WinnerService CreateWinnerService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new WinnerService(userId);
+            return service;
+        }
 
     }
+    
 }
 
