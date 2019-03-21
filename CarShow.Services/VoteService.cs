@@ -21,8 +21,7 @@ namespace CarShow.Services
             var entity =
                 new Vote()
                 {
-                    VoteId = model.VoteId,
-                    CarId = model.CarId,
+                    
                     OwnerId = _userId,
                     Paint = model.Paint,
                     Engine = model.Engine,

@@ -29,7 +29,7 @@ namespace CarShow.Controllers
         //Add code here vvvv
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateVote(VoteCreate model)
+        public ActionResult Create(VoteCreate model)
         {
             if (!ModelState.IsValid) return View(model);
 

@@ -27,9 +27,7 @@
 }
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CarId)
-        </th>
+       
         <th>
             @Html.DisplayNameFor(model => model.Paint)
         </th>
@@ -51,12 +49,8 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CarId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OwnerId)
-            </td>
+            
+            
             <td>
                 @Html.DisplayFor(modelItem => item.Paint)
             </td>

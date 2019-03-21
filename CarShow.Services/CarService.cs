@@ -44,7 +44,7 @@ namespace CarShow.Services
                 var query =
                  ctx
                      .Cars
-                     .Where(e => e.OwnerId == _userId)
+                     //.Where(e => e.OwnerId == _userId)
                      .Select(
                      e =>
                      new CarListItem

@@ -18,10 +18,10 @@ namespace CarShow.Services
         public int[] FindWinners()
         {
             IEnumerable<Vote> votelist = GetVotes();
-            var bestPaint = new MutableDictionary<int, int>();
-            var bestEngine = new MutableDictionary<int, int>();
-            var bestInterior = new MutableDictionary<int, int>();
-            var bestOfShow = new MutableDictionary<int, int>();
+            var bestPaint = new IntMap<int>();
+            var bestEngine = new IntMap<int>();
+            var bestInterior = new IntMap<int>();
+            var bestOfShow = new IntMap<int>();
 
             foreach (Vote currentvote in votelist)
             {
@@ -45,7 +45,7 @@ namespace CarShow.Services
             };
         }
 
-        public int CalcWinner(MutableDictionary<int, int> dict)
+        public int CalcWinner(IntMap<int> dict)
         {
             var winner = -1;
             var valu = -1;
@@ -84,7 +84,22 @@ namespace CarShow.Services
                 }
             }
         }
-
+        public class IntMap<T> : Dictionary<T, int>
+        {
+            public new int this[T key]
+            {
+                get
+                {
+                    if (ContainsKey(key)) return base[key];
+                    return 0;
+                }
+                set
+                {
+                    if (ContainsKey(key)) base[key] = value;
+                    else Add(key, value);
+                }
+            }
+        }
 
     }
 }
