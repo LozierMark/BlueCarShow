@@ -93,14 +93,20 @@ namespace CarShow.Controllers
 
             return RedirectToAction("Index");
         }
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateCarService();
+            var model = svc.GetCarById(id);
 
+            return View(model);
+        }
         public ActionResult Edit(int id)
         {
             var service = CreateCarService();
 
             var detail = service.GetCarById(id);
 
-            new CarEdit
+           var model = new CarEdit
             {
                 CarId = detail.CarId,
                 Make = detail.Make,
@@ -110,7 +116,7 @@ namespace CarShow.Controllers
                 ModifiedUtc = DateTimeOffset.UtcNow,
             };
 
-            return View();
+            return View(model);
         }
 
     }

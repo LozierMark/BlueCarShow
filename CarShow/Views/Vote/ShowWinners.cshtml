@@ -17,9 +17,9 @@
 <div >
    
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" id="winners">
         <dt>
-            @Html.DisplayNameFor(model => model.bestpaint)
+            Best of Paint
         </dt>
 
         <dd>
@@ -27,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.bestengine)
+            Best of Engine
         </dt>
 
         <dd>
@@ -35,7 +35,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.bestinterior)
+           Best of Interior
         </dt>
 
         <dd>
@@ -43,7 +43,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.bestofshow)
+            Best Of Show
         </dt>
 
         <dd>
@@ -52,10 +52,11 @@
 
     </dl>
 </div>
+
+<div class="col-sm-4">
+    <img src="~/Content/Assets/Trophy.jpg" width="500" height="300" />
+</div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-<div class="col-sm-4">
-    <img src="~/Content/Assets/Trophy.jpg" width="500" height="300" />
-</div>

@@ -20,6 +20,7 @@ h1 {
     font-size: 18rem;
     text-shadow: 1px 1px 4px black;
     background-color: rgba(255, 255, 255, 0.20);
+    text-align:center;
 }
 p {
     color: blueviolet;
@@ -33,6 +34,9 @@ footer{
 .navbarfont{
 font-size:2rem;
 }
+table {
+    font-size: 2rem;
+}
 /*Set padding to keep content from hitting the edges
 .body-content {
    
@@ -43,6 +47,9 @@ font-size:2rem;
 */
 .dl-horizontal dt {
     white-space: normal;
+}
+.dl-horizontal#winners{
+    font-size:2rem;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */

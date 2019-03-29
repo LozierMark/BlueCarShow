@@ -69,7 +69,7 @@ namespace CarShow.Services
                 var entity =
 
 
-                        ctx.Cars.Single(e => e.CarId == carId && e.OwnerId == _userId);
+                        ctx.Cars.Single(e => e.CarId == carId);
                 return
                     new CarDetail
                     {
@@ -109,7 +109,7 @@ namespace CarShow.Services
                 var entity =
                     ctx
                         .Cars
-                        .Single(e => e.CarId == carId && e.OwnerId == _userId);
+                        .Single(e => e.CarId == carId);
 
                 ctx.Cars.Remove(entity);
 

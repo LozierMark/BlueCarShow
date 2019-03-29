@@ -91,7 +91,13 @@ namespace CarShow.Controllers
 
             return RedirectToAction("Index");
         }
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateVoteService();
+            var model = svc.GetVoteById(id);
 
+            return View(model);
+        }
         public ActionResult Edit(int id)
         {
             var service = CreateVoteService();
